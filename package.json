@@ -1,5 +1,5 @@
 {
-  "name": "project-template",
+  "name": "top-todo-list",
   "version": "1.0.0",
   "description": "A brief description of your project, what it does, and its purpose.",
   "main": "./src/js/script.js",
