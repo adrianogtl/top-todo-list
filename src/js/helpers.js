@@ -1,6 +1,6 @@
 import { formatISO } from "date-fns";
 import { Project, Task } from "./classes.js";
-import { getProjects, getCurrProject, setCurrProject } from "./script.js";
+import { getProjects, getCurrProject, setCurrProject } from "./main.js";
 
 const isValidPriority = (priority) => priority >= 1 && priority <= 3;
 

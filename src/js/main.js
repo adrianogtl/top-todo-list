@@ -1,4 +1,6 @@
 import { createProject, createTask, createDefault } from "./helpers.js";
+import "../css/normalize.css";
+import "../css/style.css";
 
 const projects = [];
 let currProject = null;
