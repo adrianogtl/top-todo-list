@@ -1,14 +1,12 @@
-import { createProject, createTask, createDefault } from "./helpers.js";
-import "../css/normalize.css";
-import "../css/style.css";
+import { createList, createTask, createDefault } from "./helpers.js";
 
-const projects = [];
-let currProject = null;
+const lists = [];
+let currList = null;
 
-export const getProjects = () => projects;
-export const getCurrProject = () => currProject;
-export const setCurrProject = (id) =>
-  (currProject = projects.find((project) => project.id === id));
+export const getLists = () => lists;
+export const getCurrList = () => currList;
+export const setCurrList = (id) =>
+  (currList = lists.find((list) => list.id === id));
 
 createDefault();
-console.log(projects);
+console.log(lists);

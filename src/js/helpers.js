@@ -1,13 +1,13 @@
 import { formatISO } from "date-fns";
-import { Project, Task } from "./classes.js";
-import { getProjects, getCurrProject, setCurrProject } from "./main.js";
+import { List, Task } from "./classes.js";
+import { getLists, getCurrList, setCurrList } from "./main.js";
 
 const isValidPriority = (priority) => priority >= 1 && priority <= 3;
 
-export function createProject(name = "Untitled Project") {
-  const project = new Project(name);
-  getProjects().push(project);
-  setCurrProject(project.id);
+export function createList(name = "Untitled List") {
+  const list = new List(name);
+  getLists().push(list);
+  setCurrList(list.id);
 }
 
 export function createTask(
@@ -24,20 +24,20 @@ export function createTask(
     isValidPriority(priority),
     checklist
   );
-  getCurrProject().addTask(task);
+  getCurrList().addTask(task);
 }
 
-export function createDefault(numOfProjects = 1, numOfTasksPerProject = 1) {
+export function createDefault(numOfLists = 1, numOfTasksPerList = 1) {
   // Priority: 1 or 2 or 3
   const getRandomPriority = () => Math.floor(Math.random() * 3) + 1;
 
-  for (let i = 0; i < numOfProjects; i++) {
-    createProject(`Project #${i + 1}`);
+  for (let i = 0; i < numOfLists; i++) {
+    createList(`List #${i + 1}`);
 
-    for (let j = 0; j < numOfTasksPerProject; j++) {
+    for (let j = 0; j < numOfTasksPerList; j++) {
       createTask(
-        `Project #${i + 1} Task #${j + 1}`,
-        `This is the Task #${j + 1} of the Project #${i + 1}`,
+        `List #${i + 1} Task #${j + 1}`,
+        `This is the Task #${j + 1} of the List #${i + 1}`,
         new Date(2025, 3, j + 1, 12),
         getRandomPriority(),
         false

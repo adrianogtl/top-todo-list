@@ -1,10 +1,10 @@
-export class Project {
+export class List {
   static id = 1;
   constructor(name) {
-    this.id = Project.id;
+    this.id = List.id;
     this.name = name;
     this.tasks = [];
-    Project.id++;
+    List.id++;
   }
 
   getTasks() {
