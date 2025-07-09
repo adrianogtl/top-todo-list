@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="https://fav.farm/☑️" />
+    <title>Todo List</title>
+  </head>
+  <body class="container my-3">
+    <div class="row">
+      <nav class="col-lg-3">
+        <section class="mb-5">
+          <header class="d-flex justify-content-between">
+            <h1>Todo List</h1>
+            <button
+              data-bs-toggle="dark-mode"
+              aria-label="Toggle theme"
+              alt="Toggle theme"
+              title="Toggle theme"
+              id="toggle-theme-btn"
+              class="btn btn-link"
+            >
+              <i id="theme-icon" class="bi bi-moon-stars-fill"></i>
+            </button>
+          </header>
+          <hr class="mt-1 mb-3" />
+          <div class="d-flex flex-column gap-2">
+            <button class="text-start btn active">Today</button>
+            <button class="text-start btn">Upcoming</button>
+            <button class="text-start btn">Important</button>
+            <button class="text-start btn">All Tasks</button>
+          </div>
+        </section>
+        <section class="mb-5">
+          <div class="d-flex justify-content-between">
+            <h2>Lists</h2>
+            <button
+              id="new-list-btn"
+              class="btn btn-primary"
+              data-bs-toggle="modal"
+              data-bs-target="#new-list-modal"
+            >
+              New List
+            </button>
+          </div>
+          <hr />
+          <div id="user-lists" class="d-flex flex-column gap-2"></div>
+
+          <!-- New list modal -->
+          <div id="new-list-modal" class="modal" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+              <form id="new-list-form" class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">New List</h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <div class="mb-3">
+                    <label for="list-name" class="form-label">Name</label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="e.g. Work"
+                      class="form-control"
+                      id="list-name"
+                    />
+                  </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                  <button type="submit" class="btn btn-primary">
+                    Add List
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <!-- -------------- -->
+        </section>
+      </nav>
+      <main id="list-preview" class="col-lg-9">
+        <div class="d-flex justify-content-between">
+          <h2>Today</h2>
+          <button
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#new-task-modal"
+          >
+            New Task
+          </button>
+        </div>
+        <hr />
+
+        <!-- New Task modal -->
+        <div id="new-task-modal" class="modal" tabindex="-1">
+          <div class="modal-dialog modal-dialog-centered">
+            <form id="new-task-form" class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">New Task</h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <div class="mb-3">
+                  <label for="task-title" class="form-label">Title</label>
+                  <input
+                    type="text"
+                    placeholder="e.g. Update sales sheets"
+                    required
+                    class="form-control"
+                    id="task-title"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="task-description" class="form-label"
+                    >Description
+                    <span class="text-body-secondary">(Optional)</span></label
+                  >
+                  <input
+                    type="text"
+                    placeholder="e.g Update sales data sheets for the second quarter"
+                    class="form-control"
+                    id="task-description"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="task-due-date" class="form-label">Due Date</label>
+                  <input type="date" class="form-control" id="task-due-date" />
+                </div>
+                <div class="mb-3">
+                  <label for="task-priority" class="form-label">Priority</label>
+                  <select class="form-select" id="task-priority">
+                    <option selected>Select</option>
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                  </select>
+                </div>
+              </div>
+              <div class="modal-footer d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary">Add Task</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- -------------- -->
+      </main>
+    </div>
+    <div class="row mt-auto">
+      <footer class="col-md-12 text-center">
+        <p>
+          Developed by
+          <a
+            class="link"
+            href="http://github.com/adrianogtl"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Adriano Garcia</a
+          >
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>
