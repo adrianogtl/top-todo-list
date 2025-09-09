@@ -66,6 +66,7 @@
                       type="text"
                       required
                       placeholder="e.g. Work"
+                      maxlength="10"
                       class="form-control"
                       id="list-name"
                     />
@@ -82,9 +83,9 @@
           <!-- -------------- -->
         </section>
       </nav>
-      <main id="list-preview" class="col-lg-9">
+      <main class="col-lg-9">
         <div class="d-flex justify-content-between">
-          <h2>Today</h2>
+          <h2 id="list-title">Today</h2>
           <button
             class="btn btn-primary"
             data-bs-toggle="modal"
@@ -94,7 +95,7 @@
           </button>
         </div>
         <hr />
-
+        <div id="task-preview" class="d-flex flex-column gap-3"></div>
         <!-- New Task modal -->
         <div id="new-task-modal" class="modal" tabindex="-1">
           <div class="modal-dialog modal-dialog-centered">
@@ -110,13 +111,13 @@
               </div>
               <div class="modal-body">
                 <div class="mb-3">
-                  <label for="task-title" class="form-label">Title</label>
+                  <label for="task-name" class="form-label">Title</label>
                   <input
                     type="text"
                     placeholder="e.g. Update sales sheets"
                     required
                     class="form-control"
-                    id="task-title"
+                    id="task-name"
                   />
                 </div>
                 <div class="mb-3">
@@ -126,22 +127,28 @@
                   >
                   <input
                     type="text"
-                    placeholder="e.g Update sales data sheets for the second quarter"
+                    placeholder="e.g Update sales data"
+                    maxlength="25"
                     class="form-control"
                     id="task-description"
                   />
                 </div>
                 <div class="mb-3">
                   <label for="task-due-date" class="form-label">Due Date</label>
-                  <input type="date" class="form-control" id="task-due-date" />
+                  <input
+                    type="date"
+                    required
+                    class="form-control"
+                    id="task-due-date"
+                  />
                 </div>
                 <div class="mb-3">
                   <label for="task-priority" class="form-label">Priority</label>
-                  <select class="form-select" id="task-priority">
-                    <option selected>Select</option>
-                    <option value="low">Low</option>
-                    <option value="medium">Medium</option>
-                    <option value="high">High</option>
+                  <select required class="form-select" id="task-priority">
+                    <option selected value="" disabled>Select</option>
+                    <option value="0">Low</option>
+                    <option value="1">Medium</option>
+                    <option value="2">High</option>
                   </select>
                 </div>
               </div>
