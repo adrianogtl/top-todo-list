@@ -29,16 +29,18 @@ export function renderLists(lists) {
     btnEl.classList.add("btn", "text-start");
     btnEl.addEventListener("click", () => {
       setCurrentList(list);
-      document.querySelector("#list-title").textContent = list.name;
-      renderTasks(list);
+      list.name;
+      renderTasks(list.tasks, list.name);
     });
     userLists.appendChild(btnEl);
   });
 }
 
-export function renderTasks(list) {
+export function renderTasks(tasks, listName) {
+  document.querySelector("#list-title").textContent =
+    listName.charAt(0).toUpperCase() + listName.slice(1);
   const listPreview = document.querySelector("#task-preview");
-  listPreview.innerHTML = list.tasks
+  listPreview.innerHTML = tasks
     .map((list) => {
       const priorities = ["bg-success", "bg-warning", "bg-danger"];
       const date = parseISO(list.dueDate);

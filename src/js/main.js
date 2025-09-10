@@ -1,4 +1,4 @@
-import { addDays } from "date-fns";
+import { parseISO, addDays, addHours } from "date-fns";
 import "../scss/styles.scss";
 import "./events.js";
 import { List, Task } from "./classes.js";
@@ -27,10 +27,11 @@ function createDefault() {
     addDays(new Date(), 2),
     1
   );
+  createTask("Third Task", "This is yet another description.", new Date(), 1);
   createTask(
-    "Third Task",
-    "This is yet another description.",
-    addDays(new Date(), 1),
+    "Fourth Task",
+    "This is yet yet another description.",
+    addHours(new Date(), 1),
     2
   );
 }
@@ -53,11 +54,29 @@ export function createTask(name, description, dueDate, priority) {
     priority
   );
   getCurrentList().addTask(task);
-  renderTasks(getCurrentList());
 }
 
 function isDuplicatedName(list, name) {
   return list.some((list) => list.name.toLowerCase() === name.toLowerCase());
+}
+
+export function filterTasks(filter) {
+  let filterFunction;
+  if (filter === "today") {
+    filterFunction = (task) =>
+      parseISO(task.dueDate).getDate() === new Date().getDate();
+  } else if (filter === "upcoming") {
+    filterFunction = (task) =>
+      parseISO(task.dueDate).getDate() > new Date().getDate();
+  } else if (filter === "important") {
+    filterFunction = (task) => task.priority === 2;
+  } else {
+    filterFunction = (task) => task;
+  }
+
+  return LISTS.reduce((acc, list) => {
+    return acc.concat(list.tasks.filter(filterFunction));
+  }, []);
 }
 
 function init() {
@@ -66,6 +85,8 @@ function init() {
   }
   setCurrentList(LISTS[0]);
   renderLists(LISTS);
+  const tasks = filterTasks("today");
+  renderTasks(tasks, "Today");
 }
 
 window.addEventListener("DOMContentLoaded", init);
