@@ -18,6 +18,7 @@ function handleForm(e) {
     const taskDescription = document.querySelector("#task-description");
     const taskDueDate = document.querySelector("#task-due-date");
     const taskPriority = document.querySelector("#task-priority");
+
     createTask(
       taskName.value,
       taskDescription.value,

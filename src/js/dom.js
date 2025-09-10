@@ -59,6 +59,7 @@ export function renderTasks(tasks, listName) {
           priorities[list.priority]
         } rounded-start" style="width: 20px; height: auto;"></div>
           <h4 class="p-2 ">${list.name}</h4>
+          <p class="p-2">${list.description}</p>
           <p class="p-2">${format(date, "PPp", { locale })}</p>
         </div>
         `;
