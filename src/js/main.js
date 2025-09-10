@@ -4,8 +4,8 @@ import "./events.js";
 import { List, Task } from "./classes.js";
 import { renderLists, renderTasks } from "./dom.js";
 
-const LISTS = [];
-let currentList = null;
+const LISTS = JSON.parse(localStorage.getItem("lists")) || [];
+let currentList = JSON.parse(localStorage.getItem("lists")) || null;
 
 export function getCurrentList() {
   if (currentList) {
@@ -15,6 +15,7 @@ export function getCurrentList() {
 
 export function setCurrentList(newList) {
   currentList = newList;
+  localStorage.setItem("currentList", JSON.stringify(currentList));
 }
 
 function createDefault() {
@@ -43,6 +44,7 @@ export function createList(name) {
 
   const list = new List(name.trim() || "Untitled List");
   LISTS.push(list);
+  localStorage.setItem("lists", JSON.stringify(LISTS));
   renderLists(LISTS);
 }
 
@@ -54,6 +56,7 @@ export function createTask(name, description, dueDate, priority) {
     priority
   );
   getCurrentList().addTask(task);
+  localStorage.setItem("lists", JSON.stringify(LISTS));
 }
 
 function isDuplicatedName(list, name) {
