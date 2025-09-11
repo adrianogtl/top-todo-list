@@ -23,7 +23,7 @@ function handleForm(e) {
       taskName.value,
       taskDescription.value,
       taskDueDate.value,
-      taskPriority.value
+      parseInt(taskPriority.value)
     );
     taskName.value = "";
     taskDescription.value = "";
