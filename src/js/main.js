@@ -5,7 +5,7 @@ import { List, Task } from "./classes.js";
 import { renderLists, renderTasks } from "./dom.js";
 
 const LISTS = JSON.parse(localStorage.getItem("lists")) || [];
-let currentList = JSON.parse(localStorage.getItem("lists")) || null;
+let currentList = JSON.parse(localStorage.getItem("currentList")) || null;
 
 export function getCurrentList() {
   if (currentList) {
@@ -48,6 +48,10 @@ export function createList(name) {
   renderLists(LISTS);
 }
 
+function addTask(task) {
+  getCurrentList().tasks.push(task);
+}
+
 export function createTask(name, description, dueDate, priority) {
   const task = new Task(
     name.trim() || "Untitled Task",
@@ -55,7 +59,7 @@ export function createTask(name, description, dueDate, priority) {
     dueDate,
     priority
   );
-  getCurrentList().addTask(task);
+  addTask(task);
   localStorage.setItem("lists", JSON.stringify(LISTS));
 }
 
